@@ -1,0 +1,8 @@
+USE ansi_sql_db;
+
+SELECT u.full_name, e.title, e.city, e.start_date
+FROM users u
+JOIN registrations r ON u.user_id = r.user_id
+JOIN events e ON r.event_id = e.event_id
+WHERE e.status = 'upcoming' AND u.city = e.city
+ORDER BY e.start_date;
